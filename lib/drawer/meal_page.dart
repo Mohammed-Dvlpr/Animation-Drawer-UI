@@ -1,5 +1,7 @@
 import 'dart:ffi';
 
+import 'package:animation_drawer_ui/models/caregories.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class MealPage extends StatefulWidget {
@@ -9,8 +11,9 @@ class MealPage extends StatefulWidget {
   State<MealPage> createState() => _MealPageState();
 }
 
-// first design
 class _MealPageState extends State<MealPage> {
+  final List<Categories> categories = Categories.categoriesList;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +62,7 @@ class _MealPageState extends State<MealPage> {
               'Delicious meal!',
               style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
             ),
-            SearchFoodWidget(context),
+            searchFoodWidget(context),
             moreWidget(context, 'Explore Categories'),
             categoriesListViewWidget(context),
           ],
@@ -75,8 +78,9 @@ class _MealPageState extends State<MealPage> {
       // color: Colors.yellow,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 2,
+          itemCount: categories.length,
           itemBuilder: (context, index) {
+            final category = categories[index];
             return Container(
               margin: const EdgeInsets.only(right: 15),
               padding: const EdgeInsets.all(8),
@@ -85,16 +89,16 @@ class _MealPageState extends State<MealPage> {
                   color: Colors.amberAccent[200],
                   borderRadius: const BorderRadius.vertical(
                       top: Radius.circular(90), bottom: Radius.circular(90))),
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CircleAvatar(
-                    backgroundColor: Colors.white,
+                    backgroundImage: NetworkImage(category.image),
                     radius: 30,
                   ),
                   Text(
-                    'Pizza',
-                    style: TextStyle(fontSize: 15),
+                    category.text,
+                    style: const TextStyle(fontSize: 15),
                   )
                 ],
               ),
@@ -119,7 +123,7 @@ class _MealPageState extends State<MealPage> {
     );
   }
 
-  Widget SearchFoodWidget(BuildContext cotext) {
+  Widget searchFoodWidget(BuildContext cotext) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -131,7 +135,7 @@ class _MealPageState extends State<MealPage> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(40),
           ),
-          child: TextField(
+          child: const TextField(
               decoration: InputDecoration(
             border: InputBorder.none,
             prefixIcon: Icon(
