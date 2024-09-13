@@ -7,6 +7,7 @@ class MealPage extends StatefulWidget {
   State<MealPage> createState() => _MealPageState();
 }
 
+// first design
 class _MealPageState extends State<MealPage> {
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,8 @@ class _MealPageState extends State<MealPage> {
             Text(
               'Delicious meal!',
               style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-            )
+            ),
+            SearchFoodWidget(),
           ],
         ),
       ),
