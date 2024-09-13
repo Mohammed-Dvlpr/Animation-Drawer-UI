@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:animation_drawer_ui/models/caregories.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 class MealPage extends StatefulWidget {
   const MealPage({super.key});
@@ -97,7 +98,13 @@ class _MealPageState extends State<MealPage> {
                     Container(
                       height: 100,
                       width: 120,
-                      color: Colors.amberAccent,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                  "https://static.wixstatic.com/media/"
+                                  "597497_39dfa709d3d845eeaf43eb692e93b31b~mv2.jpg/"
+                                  "v1/fill/w_642,h_502,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/"
+                                  "Image-empty-state.jpg"))),
                     ),
                     const SizedBox(
                       width: 10,
@@ -239,6 +246,10 @@ class MenuDrawer extends StatefulWidget {
 class _MenuDrawerState extends State<MenuDrawer> {
   @override
   Widget build(BuildContext context) {
-    return IconButton(onPressed: () {}, icon: Icon(Icons.menu));
+    return IconButton(
+        onPressed: () {
+          ZoomDrawer.of(context)!.toggle();
+        },
+        icon: Icon(Icons.menu));
   }
 }
