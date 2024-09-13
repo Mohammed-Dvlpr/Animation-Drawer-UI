@@ -12,6 +12,7 @@ class _MealPageState extends State<MealPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         leading: const MenuDrawer(),
         backgroundColor: Colors.transparent,
@@ -36,30 +37,67 @@ class _MealPageState extends State<MealPage> {
           ),
         ],
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(15.0),
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 60,
             ),
-            Text(
+            const Text(
               'Good Evening! Mohammed',
               style: TextStyle(fontSize: 20),
             ),
-            Text(
+            const Text(
               'Grab your',
               style: TextStyle(fontSize: 30),
             ),
-            Text(
+            const Text(
               'Delicious meal!',
               style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
             ),
-            SearchFoodWidget(),
+            SearchFoodWidget(context),
           ],
         ),
       ),
+    );
+  }
+
+  Widget SearchFoodWidget(BuildContext cotext) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 8),
+          width: 260,
+          height: 45,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(40),
+          ),
+          child: TextField(
+              decoration: InputDecoration(
+            border: InputBorder.none,
+            prefixIcon: Icon(
+              Icons.search,
+              color: Colors.black,
+            ),
+            hintText: 'Resturants, Foods ....',
+            hintStyle: TextStyle(color: Colors.grey, fontSize: 12),
+          )),
+        ),
+        Container(
+          height: 45,
+          width: 45,
+          decoration: BoxDecoration(
+              color: Colors.white, borderRadius: BorderRadius.circular(18)),
+          child: const Icon(
+            Icons.tune,
+            color: Colors.black,
+          ),
+        )
+      ],
     );
   }
 }
