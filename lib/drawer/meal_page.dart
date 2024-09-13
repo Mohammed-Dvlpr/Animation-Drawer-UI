@@ -80,70 +80,93 @@ class _MealPageState extends State<MealPage> {
     return MediaQuery.removePadding(
         context: context,
         removeTop: true,
-        child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            itemCount: 2,
-            itemBuilder: (context, index) {
-              return Container(
-                padding: const EdgeInsets.all(10),
-                margin: const EdgeInsets.only(bottom: 15),
-                height: 150,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30.0)),
-                child: Row(
-                  children: [
-                    Container(
-                      height: 100,
-                      width: 120,
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  "https://static.wixstatic.com/media/"
-                                  "597497_39dfa709d3d845eeaf43eb692e93b31b~mv2.jpg/"
-                                  "v1/fill/w_642,h_502,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/"
-                                  "Image-empty-state.jpg"))),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    const Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "5 Papper",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                          Text(
-                            "Mixed Pizza",
-                            style: TextStyle(fontSize: 12, color: Colors.grey),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("\$156",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18)),
-                              Icon(
-                                Icons.favorite,
-                                color: Colors.pink,
-                                size: 18,
-                              )
-                            ],
-                          )
-                        ],
+        child: Stack(children: [
+          ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: 2,
+              itemBuilder: (context, index) {
+                return Container(
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(bottom: 15),
+                  height: 150,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30.0)),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 100,
+                        width: 120,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    "https://i.pinimg.com/564x/26/c6/4b/26c64bef44546cdc05bc2233168f32ac.jpg"))),
                       ),
-                    )
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "5 Papper",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                            Text(
+                              "Mixed Pizza",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.grey),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("\$156",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18)),
+                                Padding(
+                                  padding: EdgeInsets.all(12.0),
+                                  child: Icon(
+                                    Icons.favorite,
+                                    color: Colors.pink,
+                                    size: 18,
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              }),
+          Positioned(
+              right: 20,
+              child: Container(
+                height: 50,
+                width: 25,
+                color: Colors.yellow,
+                child: const Column(
+                  children: [
+                    Icon(
+                      Icons.star_border,
+                      size: 18,
+                    ),
+                    Text(
+                      "4.5",
+                      style:
+                          TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
-              );
-            }));
+              ))
+        ]));
   }
 
   Widget categoriesListViewWidget(BuildContext context) {
