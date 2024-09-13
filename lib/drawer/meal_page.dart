@@ -42,33 +42,57 @@ class _MealPageState extends State<MealPage> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 40,
-            ),
-            const Text(
-              'Good Evening! Mohammed',
-              style: TextStyle(fontSize: 20),
-            ),
-            const Text(
-              'Grab your',
-              style: TextStyle(fontSize: 30),
-            ),
-            const Text(
-              'Delicious meal!',
-              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-            ),
-            searchFoodWidget(context),
-            moreWidget(context, 'Explore Categories'),
-            categoriesListViewWidget(context),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 40,
+              ),
+              const Text(
+                'Good Evening! Mohammed',
+                style: TextStyle(fontSize: 20),
+              ),
+              const Text(
+                'Grab your',
+                style: TextStyle(fontSize: 30),
+              ),
+              const Text(
+                'Delicious meal!',
+                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+              ),
+              searchFoodWidget(context),
+              moreWidget(context, 'Explore Categories'),
+              categoriesListViewWidget(context),
+              moreWidget(context, 'Most Popular'),
+              mostPopulartListView(context),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  Widget mostPopulartListView(BuildContext context) {
+    return MediaQuery.removePadding(
+        context: context,
+        removeTop: true,
+        child: ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            itemCount: 2,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: const EdgeInsets.only(bottom: 15),
+                height: 150,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+              );
+            }));
   }
 
   Widget categoriesListViewWidget(BuildContext context) {
