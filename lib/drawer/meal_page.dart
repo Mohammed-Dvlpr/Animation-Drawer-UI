@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class MealPage extends StatefulWidget {
@@ -43,7 +45,7 @@ class _MealPageState extends State<MealPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 60,
+              height: 40,
             ),
             const Text(
               'Good Evening! Mohammed',
@@ -58,9 +60,62 @@ class _MealPageState extends State<MealPage> {
               style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
             ),
             SearchFoodWidget(context),
+            moreWidget(context, 'Explore Categories'),
+            categoriesListViewWidget(context),
           ],
         ),
       ),
+    );
+  }
+
+  Widget categoriesListViewWidget(BuildContext context) {
+    return SizedBox(
+      height: 130,
+      width: double.infinity,
+      // color: Colors.yellow,
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: 2,
+          itemBuilder: (context, index) {
+            return Container(
+              margin: const EdgeInsets.only(right: 15),
+              padding: const EdgeInsets.all(8),
+              width: 80,
+              decoration: BoxDecoration(
+                  color: Colors.amberAccent[200],
+                  borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(90), bottom: Radius.circular(90))),
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 30,
+                  ),
+                  Text(
+                    'Pizza',
+                    style: TextStyle(fontSize: 15),
+                  )
+                ],
+              ),
+            );
+          }),
+    );
+  }
+
+  Widget moreWidget(BuildContext context, String text) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          text,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+        ),
+        InkWell(
+          onTap: () {},
+          child: const Icon(Icons.more_horiz, color: Colors.black),
+        )
+      ],
     );
   }
 
