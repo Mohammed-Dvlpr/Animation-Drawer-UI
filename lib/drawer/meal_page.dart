@@ -85,11 +85,55 @@ class _MealPageState extends State<MealPage> {
             itemCount: 2,
             itemBuilder: (context, index) {
               return Container(
+                padding: const EdgeInsets.all(10),
                 margin: const EdgeInsets.only(bottom: 15),
                 height: 150,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30.0)),
+                child: Row(
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 120,
+                      color: Colors.amberAccent,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "5 Papper",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
+                          Text(
+                            "Mixed Pizza",
+                            style: TextStyle(fontSize: 12, color: Colors.grey),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("\$156",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18)),
+                              Icon(
+                                Icons.favorite,
+                                color: Colors.pink,
+                                size: 18,
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    )
+                  ],
                 ),
               );
             }));
